@@ -77,7 +77,7 @@ function onError(error) {
 }
 function onListening() {
   const addr = server.address();
-  let {port} = addr;
+  const {port} = addr;
   const bind = typeof addr === 'string' ? `pipi ${addr}` : `port ${port}`;
   debug(`Listening on ${bind}`);
   console.log(`http://localhost:${port}`);
