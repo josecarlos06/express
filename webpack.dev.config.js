@@ -1,12 +1,9 @@
-// Notas importanes
-// El archivo de configuración debe usar ES5
-
 // Importar un administrador de rutas de archivos
 const path = require('path');
 
 // Importando el extractor de css
-const MiniCssExtractPlugin =
-  require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { javascript } = require('webpack');
 
 // Exportamos un objeto de configuración
 // que sera usado por webpack
@@ -33,6 +30,7 @@ module.exports = {
   module: {
     rules: [
       {
+        // agregar expresion regular de javascript
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: [
@@ -55,6 +53,7 @@ module.exports = {
         ]
       },
       {
+        // agregar css en la exprecion regular
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader,'css-loader']
       }
