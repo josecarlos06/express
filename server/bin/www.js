@@ -1,4 +1,3 @@
-/*Modernizando a ES6 🎯️*/
 import app from '../app';
 import debug from 'debug';
 import http from 'http';
