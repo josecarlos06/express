@@ -1,16 +1,8 @@
-#!/usr/bin/env node
-
-/**
- * Module dependencies.
- */
 
 import app from '../app';
 import debug from 'debug';
 import http from 'http';
-// cambios correctos
-/**
- * Get port from environment and store in Express.
- */
+
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
