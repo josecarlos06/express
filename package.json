@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./dist/bin/www",
-    "dev": "NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
-    "devb": "babel-watch ./server/bin/www",
+    "dev": "DEBUG=ejercicio1 NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
+    "devb": "babel-watch ./server/bin/www.js",
     "devc": "NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
     "cleans": "rm -rf dist",
     "cleanc": "rm -f ./public/bundle.js ./public/stylesheets/app.css",
     "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
     "b:c": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
-    "build" : "npm run b:c && npm run b:s"
+    "build": "npm run b:c && npm run b:s"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",

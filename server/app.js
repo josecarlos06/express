@@ -1,25 +1,51 @@
-// Biblioteca de 3ros para manejar errores http
-// ES5: var createError = require('http-errors');
-// ES6 👇
 import createError from 'http-errors';
-// El framework express
 import express from 'express';
-// Biblioteca del nucleo de node que sirve para
-// administrar rutas
 import path from 'path';
-// Biblioteca externa que sirve para administrar
-// cookies
 import cookieParser from 'cookie-parser';
-// Biblioteca que registra en consola
-// solicitudes del cliente
 import logger from 'morgan';
+import debug from './service/debugLogger'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from '../webpack.dev.config'
+
+// Recuperar el modo de ejecución de la app
+const nodeEnv = process.env.NODE_ENV || 'development'
 
 // Definición de rutas
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
+import WebpackHotMiddleware from 'webpack-hot-middleware';
 
 // Creando una instancia de express
 const app = express();
+
+// Inclusion del webpack middleware
+if (nodeEnv === 'development') {
+  debug('✒ Ejecutando en modo de desarrollo 👨‍💻')
+  // Configurando webpack en modo de desarrollo
+  webpackConfig.mode = 'development'
+  // Configurar la ruta del HMR (Hot Module Replacement)
+  // 👉 "reload=true" -> Habilita la recarga automatica cuando un archivo
+  // js cambia
+  // 👉 "timeout=1000" -> Establece el timpo de refresco de la pagina
+  webpackConfig.entry = [
+    "webpack-hot-middleware/client?reload=true&timeout=1000",
+    webpackConfig.entry
+  ]
+  // Agregando el plugin a la configuracion
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
+  // Crear el empaquetado con webpack
+  const bundler = webpack(webpackConfig);
+  // Registro el middleware en express
+  app.use(webpackDevMiddleware(bundler, {
+    publicPath: webpackConfig.output.publicPath
+  }))
+  // Registrando el HMR Middleware
+  app.use(WebpackHotMiddleware(bundler))
+} else {
+  debug('✒ Ejecutando en modo de producción 🏭')
+}
 
 // view engine setup
 // Configura el motor de plantillas
@@ -62,8 +88,4 @@ app.use((err, req, res, next)=> {
   res.render('error');
 });
 
-// Exportando la instancia del server "app"
-// ES5 👇
-// module.exports = app;
-// ES6 👇
 export default app;
