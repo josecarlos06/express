@@ -67,8 +67,8 @@ function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string'
   const {port} = addr
-    ? 'pipe ' + addr
-    : 'port ' + port;
+    ? `Pipe ${addr}`
+    : `Port ${port}`;
     // Desestrecuturando port de addr
-  debug(`🎈 Listening on http://localhost:${port}`);
+  debug(`http://localhost:${port}`);
 }
