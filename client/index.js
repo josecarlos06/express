@@ -1,6 +1,5 @@
-import './stylesheets/style.css'
+// Cargado estilos
+import './stylesheet/myStyles.css';
+import './stylesheet/style.css';
 
-const texto = document.querySelector('#texto');
-texto.textContent="Texto ingresado desde Javascript 😈";
-
-
+console.log('Webpack Working Middleware!!! 📦');
