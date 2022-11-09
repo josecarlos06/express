@@ -5,8 +5,7 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   // View-Model
   res.render('index', {
-    author: 'Carlos medina'
-  });
+    author: ' *_* '});
 });
 
 module.exports = router;

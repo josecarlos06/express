@@ -26,12 +26,15 @@ import debug from './services/debugLogger';
 // Definición de rutas
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
+
+import configHbs from './config/templeteEngine';
+
 // Recuperar el modo de ejecución de la app
 const nodeEnv = process.env.NODE_ENV || 'development';
 
 // Creando una instancia de express
 const app = express();
-
+logger.info('esto es express');
 // Inclusion del webpack middleware
 if (nodeEnv === 'development') {
   debug('✒ Ejecutando en modo de desarrollo 👨‍💻');
@@ -64,11 +67,7 @@ if (nodeEnv === 'development') {
 // view engine setup
 // Configura el motor de plantillas
 // 1. Establecer donde estarán las plantillas
-// (Vistas -> Views)
-// app.set("<nombre de la var>", <valor>)
-app.set('views', path.join(__dirname, 'views'));
-// Establezco que motor precargado usare
-app.set('view engine', 'hbs');
+configHbs(app);
 
 // Establezco Middelware
 app.use(morgan('dev', { stream: logger.stream }));
