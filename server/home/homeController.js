@@ -6,5 +6,6 @@ const homeIndex = (req,res) => {
       author: ' *_* ',
    };
    res.render('home', viewModel);
-}
+};
+
 export default { homeIndex };
