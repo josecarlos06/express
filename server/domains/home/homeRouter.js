@@ -4,6 +4,7 @@ import homeController from './homeController';
 const router = new Router();
 
 // enrutamos
-router.get(['/', '/home', '/index'], homeController.homeIndex);
+router.get(['/', '/home', '/index'], homeController.home);
+router.get(['/about'], homeController.about);
 
 export default router;

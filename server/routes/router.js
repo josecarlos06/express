@@ -1,4 +1,4 @@
-import homeRouter from '../home/homeRouter';
+import homeRouter from '../domains/home/homeRouter';
 
 const addRoutes = (app) => {
   // agregando ruta home
