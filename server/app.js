@@ -26,6 +26,7 @@ import debug from './services/debugLogger';
 // Definición de rutas
 import router from './routes/router';
 import configHbs from './config/templeteEngine';
+
 // Recuperar el modo de ejecución de la app
 const nodeEnv = process.env.NODE_ENV || 'development';
 

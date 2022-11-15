@@ -1,15 +1,20 @@
 // creando los Actions methods
 // get "/"
 // get "/index"
-const home = (req,res) => {
-   const viewModel = {
-      author: 'Express',
-      name: 'carlos',
-   };
-   res.render('home/home', viewModel);
+import configKeys from '../../config/configKeys';
+
+const home = (req, res) => {
+  const viewModel = {
+    author: 'Express',
+    name: 'carlos',
+  };
+  res.render('home/home', viewModel);
 };
 
 const about = (req, res) => {
-   res.render('home/about', {});
+  const viewModel = {
+    appVersion: configKeys.appVersion,
+  };
+  res.render('home/about', viewModel);
 };
 export default { home, about };

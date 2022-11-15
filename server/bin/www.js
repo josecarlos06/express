@@ -9,12 +9,12 @@
 import http from 'http';
 import app from '../app';
 import debug from '../services/debugLogger';
-
+import configKeys from '../config/configKeys';
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(configKeys.port);
 app.set('port', port);
 
 /**
