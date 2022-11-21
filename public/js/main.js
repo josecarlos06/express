@@ -12,4 +12,4 @@ function menu(){
          navIcon.textContent = 'close'
       }
    })
-};;
+};
