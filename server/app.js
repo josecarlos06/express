@@ -27,8 +27,11 @@ import debug from './services/debugLogger';
 import router from './routes/router';
 import configHbs from './config/templeteEngine';
 
+import configKeys from './config/configKeys';
+import MongooseOdm from './config/odm';
+
+const nodeEnv = configKeys.env;
 // Recuperar el modo de ejecución de la app
-const nodeEnv = process.env.NODE_ENV || 'development';
 
 // Creando una instancia de express
 const app = express();
