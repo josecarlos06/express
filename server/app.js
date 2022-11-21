@@ -65,6 +65,22 @@ if (nodeEnv === 'development') {
   debug('✒ Ejecutando en modo de producción 🏭');
 }
 
+
+const mongooseODM = new MongooseOdm(configKeys.mongoUrl);
+
+(async () => {
+  // Ejecutamos le metodo de conexion
+  const connectionResult = await mongooseODM.connect();
+  // Checamos si hay error
+  if (connectionResult) {
+    // Si conecto correctamente a la base de datos
+    logger.info('Conexion a la BD exitosa 😈');
+  } else {
+    logger.error('error de conexion😢');
+  }
+})();
+
+
 // view engine setup
 // Configura el motor de plantillas
 // 1. Establecer donde estarán las plantillas
