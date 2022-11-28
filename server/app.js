@@ -35,7 +35,7 @@ const nodeEnv = configKeys.env;
 
 // Creando una instancia de express
 const app = express();
-logger.info('esto es express');
+
 // Inclusion del webpack middleware
 if (nodeEnv === 'development') {
   debug('✒ Ejecutando en modo de desarrollo 👨‍💻');
