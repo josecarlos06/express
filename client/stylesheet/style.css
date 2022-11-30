@@ -238,6 +238,7 @@ h1,h2,h3,p,ul,li,a{
   padding:2rem;
   gap:2rem;
   box-shadow:0px 0px 12px 3px rgba(191, 191, 191, 0.637);
+  border-radius:.2rem;
 }
 .fields{
   display: flex;
@@ -252,6 +253,19 @@ h1,h2,h3,p,ul,li,a{
   border: none;
   outline: none;
   border-bottom:1px solid gray;
+  resize: none;
+  height:3rem;
+}
+.field__label::after{
+  content:'*';
+  color:red;
+  font-size:2.5rem;
+  margin-left:1rem;
+}
+.Alerterror{
+  color:crimson;
+  margin-top:.6rem;
+  font-size:1.5rem;
 }
 .fiedls--action{
   display: flex;

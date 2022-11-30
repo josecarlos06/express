@@ -5,11 +5,17 @@
 <form autocomplete="off" action="/project/add" method="POST" class="form">
    <div class="fields">
       <label for="project-name" class="field__label">Nombre del proyecto</label>
-      <input type="text" name="name" id="project-name" class="field__input" placeholder="Nombre del proyecto 😈">
+      <input type="text" name="name" id="project-name" class="field__input" value="{{project.name}}">
+      {{#if errorModel.nameError }}
+      <span class="Alerterror"> {{errorModel.nameError}} </span>
+      {{/if}}
    </div>
    <div class="fields">
-      <label for="description" class="field__label">Nombre del proyecto</label>
-      <textarea name="description" id="description" class="field__input"></textarea>
+      <label for="description" class="field__label">Descripcion del proyecto</label>
+      <textarea name="description" id="description" class="field__input">{{project.description}}</textarea>
+      {{#if errorModel.descriptionError }}
+      <span class="Alerterror">{{errorModel.descriptionError}}</span>
+      {{/if}}
    </div>
    <div class="fiedls--action">
       <button type="submit" class="bton__search">Enviar</button>

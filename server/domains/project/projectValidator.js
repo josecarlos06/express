@@ -1,9 +1,9 @@
 import * as Yup from 'yup';
 const projectSchema = Yup.object().shape({
-   name: Yup.string().required('Falto nombre de proyecto 😢'),
+   name: Yup.string().required('Falta nombre del proyecto'),
    description: Yup.string()
       .max(500, 'No escribir mas de 500 caracteres')
-      .required('Este campo no puede estar vacio 😢'),
+      .required('Falta descripcion'),
 });
 const getProject = (req) => {
    const { name, description } = req.body;
